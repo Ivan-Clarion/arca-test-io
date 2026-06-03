@@ -18,9 +18,11 @@ import {
 
 export const nav = {
   links: [
-    { label: "Features", href: "#features" },
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Insights", href: "#insights" },
+    { label: "Features", href: "/#features" },
+    { label: "How it works", href: "/#how-it-works" },
+    { label: "Insights", href: "/#insights" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "FAQ", href: "/#faq" },
   ],
 };
 
@@ -193,6 +195,88 @@ export const insights = [
   },
 ];
 
+export const pricing = {
+  eyebrow: "Pricing",
+  title: "Plans that scale with your folders.",
+  subtitle:
+    "Start free on a single folder. Upgrade when your whole company is ready to see what's buried.",
+  plans: [
+    {
+      name: "Starter",
+      price: "$0",
+      period: "forever",
+      blurb: "For trying Tester.io on a single team folder.",
+      features: [
+        "1 connected folder",
+        "Up to 100 documents",
+        "Weekly scans",
+        "Email insight summary",
+      ],
+      cta: "Get Started",
+      featured: false,
+    },
+    {
+      name: "Team",
+      price: "$49",
+      period: "per month",
+      blurb: "For growing teams that need daily visibility across departments.",
+      features: [
+        "Up to 25 connected folders",
+        "Unlimited documents",
+        "Daily scans",
+        "Risk & deadline alerts",
+        "10 team seats",
+      ],
+      cta: "Start free trial",
+      featured: true,
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      period: "let's talk",
+      blurb: "For organizations with compliance, scale, and security needs.",
+      features: [
+        "Unlimited folders & seats",
+        "Hourly scans",
+        "SSO & audit logs",
+        "On-premise deployment",
+        "Dedicated success manager",
+      ],
+      cta: "Contact sales",
+      featured: false,
+    },
+  ],
+};
+
+export const faq = {
+  eyebrow: "FAQ",
+  title: "Questions, answered.",
+  subtitle:
+    "Everything you need to know about how Tester.io reads, secures, and surfaces your documents.",
+  items: [
+    {
+      q: "What file types can Tester.io read?",
+      a: "Tester.io reads common business formats end to end — Word documents (.docx), Excel spreadsheets (.xlsx), PDFs, and plain text. It understands tables, dates, owners, and statuses, not just file names.",
+    },
+    {
+      q: "How does Tester.io keep our documents secure?",
+      a: "Your files are encrypted in transit and at rest. Confidential and restricted documents are handled on a need-to-know basis, and every access is recorded in an audit log on Team and Enterprise plans.",
+    },
+    {
+      q: "Do I need to move my files to use it?",
+      a: "No. Point Tester.io at an existing folder tree or connect your drive — it maps every department in place. Nothing is moved or restructured.",
+    },
+    {
+      q: "How quickly will I see insights?",
+      a: "The first scan typically surfaces risks, deadlines, and decisions within seconds of connecting a folder. After that, scans run on your plan's schedule — weekly, daily, or hourly.",
+    },
+    {
+      q: "Can I try it before paying?",
+      a: "Yes. The Starter plan is free forever on a single folder of up to 100 documents, and the Team plan includes a free trial. No card required to start.",
+    },
+  ],
+};
+
 export const cta = {
   title: "Stop reading folders. Start seeing risks.",
   subtitle:
@@ -224,15 +308,34 @@ export const footer = {
   columns: [
     {
       heading: "Product",
-      links: ["Features", "How it works", "Insights", "Pricing"],
+      links: [
+        { label: "Features", href: "/#features" },
+        { label: "How it works", href: "/#how-it-works" },
+        { label: "Insights", href: "/#insights" },
+        { label: "Pricing", href: "/#pricing" },
+      ],
     },
     {
       heading: "Company",
-      links: ["About", "Careers", "Contact", "Security"],
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Careers", href: "/careers" },
+        { label: "Contact", href: "/contact" },
+        { label: "Security", href: "/security" },
+      ],
     },
     {
       heading: "Resources",
-      links: ["Documentation", "Guides", "Support", "Status"],
+      links: [
+        { label: "Documentation", href: "/documentation" },
+        { label: "Guides", href: "/guides" },
+        { label: "Support", href: "/support" },
+        { label: "Status", href: "/status" },
+      ],
     },
+  ],
+  legal: [
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
   ],
 };
