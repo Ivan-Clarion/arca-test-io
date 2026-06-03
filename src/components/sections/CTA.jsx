@@ -20,7 +20,7 @@ export default function CTA() {
               </h2>
               <p className="max-w-md text-muted">{cta.subtitle}</p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Button href="#">{cta.primaryCta}</Button>
+                <Button href="/get-started">{cta.primaryCta}</Button>
                 <Button href="#features" variant="outline">
                   {cta.secondaryCta}
                 </Button>

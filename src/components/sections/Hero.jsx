@@ -30,7 +30,7 @@ export default function Hero() {
 
         <Reveal delay={240}>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button href="#cta">{hero.primaryCta}</Button>
+            <Button href="/get-started">{hero.primaryCta}</Button>
             <Button href="#features" variant="outline">
               {hero.secondaryCta}
             </Button>

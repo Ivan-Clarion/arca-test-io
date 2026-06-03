@@ -32,7 +32,7 @@ export default function Navbar() {
           >
             Learn More
           </Button>
-          <Button href="/#cta">Get Started</Button>
+          <Button href="/get-started">Get Started</Button>
         </div>
       </nav>
     </header>

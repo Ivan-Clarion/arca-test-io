@@ -57,7 +57,7 @@ export default function PricingCard({
         </ul>
 
         <Button
-          href="#cta"
+          href="/get-started"
           variant={featured ? "primary" : "outline"}
           className="mt-8 w-full"
         >
