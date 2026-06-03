@@ -14,7 +14,7 @@ import {
   RotateCcw,
   Sparkles,
 } from "lucide-react";
-import BarChart from "@/components/get-started/BarChart";
+import GeminiChart from "@/components/get-started/GeminiChart";
 import { ACCEPTED_EXTENSIONS } from "@/lib/extractText";
 
 const severityStyles = {
@@ -218,7 +218,7 @@ export default function GetStartedClient() {
   const risks = scan?.risks ?? [];
   const deadlines = scan?.deadlines ?? [];
   const decisions = scan?.decisions ?? [];
-  const figures = scan?.figures ?? [];
+  const chart = scan?.chart;
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -250,13 +250,13 @@ export default function GetStartedClient() {
         <p className="mt-3 leading-relaxed text-foreground/90">{scan?.summary}</p>
       </section>
 
-      {/* Figures / graph */}
-      {figures.length > 0 && (
+      {/* Visualization — chart type chosen by Gemini */}
+      {chart?.data?.length > 0 && (
         <section className="mt-6">
           <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
-            <BarChart3 className="h-4 w-4 text-gold" /> Key figures
+            <BarChart3 className="h-4 w-4 text-gold" /> Visualization
           </h3>
-          <BarChart figures={figures} />
+          <GeminiChart chart={chart} />
         </section>
       )}
 
@@ -318,14 +318,9 @@ export default function GetStartedClient() {
                     {m.text}
                   </div>
 
-                  {m.chart?.figures?.length > 0 && (
+                  {m.chart?.data?.length > 0 && (
                     <div className="w-full">
-                      {m.chart.title && (
-                        <p className="mb-2 flex items-center gap-2 text-xs font-semibold text-gold">
-                          <BarChart3 className="h-3.5 w-3.5" /> {m.chart.title}
-                        </p>
-                      )}
-                      <BarChart figures={m.chart.figures} />
+                      <GeminiChart chart={m.chart} />
                     </div>
                   )}
                 </div>

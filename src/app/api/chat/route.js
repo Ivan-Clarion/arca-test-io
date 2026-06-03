@@ -22,7 +22,7 @@ export async function POST(req) {
     const system = `${BASE_RULES}
 
 CHART RULE:
-- If a chart would genuinely help answer the question AND the numeric values needed are present in the document, include a "chart" object with a short "title" and 2-8 "figures" (label + value, plus an optional unit). Use comparable units within one chart.
+- If a chart would genuinely help answer the question AND the numeric values are present in the document, include a "chart" object. YOU decide the best chart "type" ("bar" for comparing categories, "line"/"area" for trends over time, "pie" for parts of a whole), a short "title", and 2-8 "data" points (label + numeric value) with comparable units.
 - Only chart numbers that actually appear in the document. If a chart does not help or the data isn't present, omit "chart" entirely.
 - The "answer" field must always contain your written reply.
 
@@ -53,8 +53,8 @@ ${documentText}
     try {
       const parsed = JSON.parse(raw);
       answer = parsed.answer ?? raw;
-      // Only keep a chart that actually has usable figures.
-      if (parsed.chart?.figures?.some((f) => typeof f?.value === "number")) {
+      // Only keep a chart that actually has usable data points.
+      if (parsed.chart?.data?.some((d) => typeof d?.value === "number")) {
         chart = parsed.chart;
       }
     } catch {

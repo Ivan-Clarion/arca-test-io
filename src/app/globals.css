@@ -17,6 +17,13 @@
 
   --gold-start: #c6a559;
   --gold-end: #e6b979;
+
+  /* Chart palette (shadcn charts) — derived from the brand gold */
+  --chart-1: #e6b979;
+  --chart-2: #c6a559;
+  --chart-3: #d4af6a;
+  --chart-4: #b8893f;
+  --chart-5: #8a6d3b;
 }
 
 @theme inline {
@@ -29,6 +36,12 @@
   --color-gold: #d4af6a;
   --color-gold-start: var(--gold-start);
   --color-gold-end: var(--gold-end);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 
   --font-sans: var(--font-montserrat);
 }

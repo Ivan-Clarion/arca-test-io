@@ -15,7 +15,7 @@ TASK: Scan the document and return a structured analysis as JSON with:
 - "risks": notable risks, red flags, or issues (with a severity of low/medium/high).
 - "deadlines": dates, milestones, or time-sensitive items.
 - "decisions": decisions made, pending, or required.
-- "figures": up to 6 notable numeric values worth charting (budgets, counts, percentages, attainment). Keep units comparable within the set when possible.
+- "chart": ALWAYS include this object. YOU decide the best chart for the document's data: choose "type" ("bar" for comparing categories, "line"/"area" for trends over time, "pie" for parts of a whole), a short "title", and 2-8 "data" points (label + numeric value) using comparable units. Chart only numbers actually present in the document. If the document is purely qualitative with no usable numbers, set "data" to an empty array.
 Only include items that are actually present in the document. Use empty arrays when a category does not apply.`;
 
 export async function POST(req) {
@@ -64,7 +64,7 @@ export async function POST(req) {
       scan = JSON.parse(raw);
     } catch {
       // Fall back to treating the raw output as a summary if JSON parsing fails.
-      scan = { summary: raw, risks: [], deadlines: [], decisions: [], figures: [] };
+      scan = { summary: raw, risks: [], deadlines: [], decisions: [], chart: null };
     }
 
     return NextResponse.json({ documentText: text, truncated, scan });

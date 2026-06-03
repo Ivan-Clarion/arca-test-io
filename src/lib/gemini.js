@@ -23,6 +23,39 @@ STRICT RULES:
 - Be concise and specific. When you answer, reference the exact figures, dates, names, or sections from the document.`;
 
 /**
+ * Shared schema for a chart the model may choose to include.
+ * The model picks the `type`; `data` is a simple label/value series.
+ */
+export const CHART_SHAPE = {
+  type: "OBJECT",
+  description:
+    "A chart visualizing quantitative data from the document. Pick the type that best fits the data.",
+  properties: {
+    type: {
+      type: "STRING",
+      enum: ["bar", "line", "area", "pie"],
+      description:
+        "bar = compare categories, line/area = trend over time, pie = parts of a whole.",
+    },
+    title: { type: "STRING", description: "Short chart title." },
+    data: {
+      type: "ARRAY",
+      description:
+        "2-8 points to plot. Empty array only when the document has no numeric data.",
+      items: {
+        type: "OBJECT",
+        properties: {
+          label: { type: "STRING" },
+          value: { type: "NUMBER" },
+        },
+        required: ["label", "value"],
+      },
+    },
+  },
+  required: ["type", "data"],
+};
+
+/**
  * JSON schema for the initial scan output (structured for the UI).
  */
 export const SCAN_SCHEMA = {
@@ -63,20 +96,9 @@ export const SCAN_SCHEMA = {
         required: ["title"],
       },
     },
-    figures: {
-      type: "ARRAY",
-      items: {
-        type: "OBJECT",
-        properties: {
-          label: { type: "STRING" },
-          value: { type: "NUMBER" },
-          unit: { type: "STRING" },
-        },
-        required: ["label", "value"],
-      },
-    },
+    chart: CHART_SHAPE,
   },
-  required: ["summary"],
+  required: ["summary", "chart"],
 };
 
 /**
@@ -87,24 +109,7 @@ export const CHAT_SCHEMA = {
   type: "OBJECT",
   properties: {
     answer: { type: "STRING" },
-    chart: {
-      type: "OBJECT",
-      properties: {
-        title: { type: "STRING" },
-        figures: {
-          type: "ARRAY",
-          items: {
-            type: "OBJECT",
-            properties: {
-              label: { type: "STRING" },
-              value: { type: "NUMBER" },
-              unit: { type: "STRING" },
-            },
-            required: ["label", "value"],
-          },
-        },
-      },
-    },
+    chart: CHART_SHAPE,
   },
   required: ["answer"],
 };
